@@ -14,7 +14,6 @@ import { join } from "node:path";
 type PuaConfig = {
   always_on?: boolean;
   offline?: boolean;
-  feedback_frequency?: number;
   flavor?: string;
 };
 
@@ -86,7 +85,6 @@ export default function puaPiExtension(pi: ExtensionAPI) {
     description: "Enable PUA always-on mode for pi and shared ~/.pua/config.json.",
     handler: async (_args, ctx) => {
       const patch: PuaConfig = { always_on: true };
-      if (readConfig().feedback_frequency === 0) patch.feedback_frequency = 5;
       config = writeConfig(patch);
       ctx?.ui?.notify?.("[PUA ON] pi extension enabled.", "success");
     },
@@ -95,7 +93,7 @@ export default function puaPiExtension(pi: ExtensionAPI) {
   pi.registerCommand("pua-off", {
     description: "Disable PUA always-on mode and feedback prompts.",
     handler: async (_args, ctx) => {
-      config = writeConfig({ always_on: false, feedback_frequency: 0 });
+      config = writeConfig({ always_on: false });
       ctx?.ui?.notify?.("[PUA OFF] pi extension disabled.", "info");
     },
   });

@@ -37,8 +37,7 @@
 
 ```json
 {
-  "offline": true,
-  "feedback_frequency": 0
+  "offline": true
 }
 ```
 

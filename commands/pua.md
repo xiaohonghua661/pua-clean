@@ -25,7 +25,7 @@ argument-hint: "[p7|p9|p10|pro|yes|mama|loop|on|off|offline|kpi|flavor|ding|agai
 - **yes** → Read `skills/yes/SKILL.md`（SB Leader 夸夸模式 — ENFP 型领导，70% 鼓励 + 20% 正经 + 10% 戏谑）
 - **mama** → Read `skills/mama/SKILL.md`（妈妈唠叨模式 — 中国式妈妈碎碎念，底层行为不变，旁白从大厂PUA变成妈妈唠叨。和 yes 互斥）
 - **on** → 开启 PUA 默认模式：将 `{"always_on": true}` 写入 `~/.pua/config.json`，之后每次新会话自动加载 PUA 核心 skill。输出确认：> [PUA ON] 从现在起，每个新会话都会自动进入 PUA 模式。公司不养闲 Agent。
-- **off** → 关闭 PUA 默认模式：将 `{"always_on": false, "feedback_frequency": 0}` 写入 `~/.pua/config.json`。输出确认：> [PUA OFF] PUA 默认模式和反馈收集已关闭。需要时手动 /pua 触发。
+- **off** → 关闭 PUA 默认模式：将 `{"always_on": false}` 写入 `~/.pua/config.json`。输出确认：> [PUA OFF] PUA 默认模式已关闭。需要时手动 /pua 触发。
 - **offline** → 兼容保留：本分支已无任何联网路径，离线是唯一行为。写入 `{"offline": true}` 并输出：> [PUA OFFLINE] 本分支无联网能力，已是离线。
 - **味道** 或 **flavor** → 读取 `skills/pua/references/flavors.md` 并让用户选择切换味道
 - **ding** / **钉味** / **置身钉外** / **置身钉内** / **每日一包** / **薛定谔的用户** / **病态敏捷** / **望舒行动** → 读取 `skills/pua/references/methodology-ding.md` 和 `skills/pua/references/ding-reminders.md`，启用 📌 钉内/钉外味（源自原文梗）

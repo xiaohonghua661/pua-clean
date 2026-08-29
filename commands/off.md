@@ -7,7 +7,7 @@ description: "PUA 关闭默认模式 — 关闭自动加载、停止 loop、清�
 ## 步骤
 
 1. **写入配置**（确保 `~/.pua/` 目录存在）：
-   - 将 `{"always_on": false, "feedback_frequency": 0}` 写入 `~/.pua/config.json`
+   - 将 `{"always_on": false}` 写入 `~/.pua/config.json`
 
 2. **停止活跃 loop**（若有）：
    ```bash

@@ -42,7 +42,7 @@ Copy-Item -Path .\pi\pua\* -Destination $target -Recurse -Force
 | 命令 | 作用 |
 |---|---|
 | `/pua-on` | `always_on=true`，当前和后续会话启用 |
-| `/pua-off` | `always_on=false` 且 `feedback_frequency=0` |
+| `/pua-off` | `always_on=false` |
 | `/pua-status` | 查看开关、离线模式、失败计数和配置路径 |
 | `/pua-reset` | 清零失败计数 |
 
