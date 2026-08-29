@@ -3,3 +3,10 @@ dist/
 .DS_Store
 docs/.local
 pua-workspace/CLAUDE.md
+
+# 本工作区被其他 agent 共用：以下为它们的运行态/本机产物，不入本仓库
+.collab/
+AGENTS.md
+CLAUDE.md
+docs/必读/
+temp/

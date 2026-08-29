@@ -48,7 +48,16 @@ mirror_into() {
   for item in "$SRC"/* "$SRC"/.[!.]*; do
     [ -e "$item" ] || continue
     base="$(basename "$item")"
-    case "$base" in .git|sync.sh) continue ;; esac
+    case "$base" in .git|sync.sh|.collab|AGENTS.md|CLAUDE.md|temp) continue ;; esac
+    if [ "$base" = "docs" ]; then
+      mkdir -p "$dst/docs"
+      for sub in "$item"/*; do
+        [ -e "$sub" ] || continue
+        [ "$(basename "$sub")" = "必读" ] && continue
+        cp -r "$sub" "$dst/docs/"
+      done
+      continue
+    fi
     cp -r "$item" "$dst/"
   done
 }
