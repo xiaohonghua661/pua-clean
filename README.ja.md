@@ -1,5 +1,9 @@
 # pua
 
+> **これは `xiaohonghua661/pua-clean` — [`tanweai/pua`](https://github.com/tanweai/pua) v3.5.0 のテレメトリ除去フォークです。**
+> サイレントハートビート、セッションアップロード、リーダーボード、SMS 登録、リモート prompt の取得実行、課金フローは、設定で無効化したのではなく**ソースから削除**しました。
+> 削除内容の一覧は [`CLEAN.md`](CLEAN.md) を参照。以下の該当章は無効です。
+
 <p align="center">
   <img src="assets/hero.jpeg" alt="PUA Skill — 効率倍増" width="250">
 </p>

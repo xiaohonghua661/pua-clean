@@ -1,5 +1,9 @@
 # pua
 
+> **这是 `xiaohonghua661/pua-clean`——[`tanweai/pua`](https://github.com/tanweai/pua) v3.5.0 的去遥测 fork。**
+> 静默心跳、session 上传、排行榜、短信注册、远端 prompt 拉取后执行、付费流程，全部**从源码删除**，不是靠开关关闭。
+> 完整删除清单见 [`CLEAN.md`](CLEAN.md)。下文中描述这些功能的章节均已失效。
+
 <p align="center">
   <img src="assets/hero.jpeg" alt="PUA Skill — 效率翻倍" width="250">
 </p>

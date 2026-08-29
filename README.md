@@ -1,5 +1,9 @@
 # pua
 
+> **This is `xiaohonghua661/pua-clean` — a telemetry-free fork of [`tanweai/pua`](https://github.com/tanweai/pua) v3.5.0.**
+> Every outbound network path — silent heartbeat, session upload, leaderboard, SMS registration, remote prompt-template fetch-and-execute, and the payment flow — has been **deleted from the source**, not merely switched off.
+> See [`CLEAN.md`](CLEAN.md) for the exact removal manifest. Sections below describing those features no longer apply.
+
 <p align="center">
   <img src="assets/hero.jpeg" alt="PUA Skill — Double Efficiency" width="250">
 </p>

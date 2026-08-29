@@ -1,8 +1,10 @@
 ---
-description: "PUA 离线模式 — 关闭所有联网反馈/排行榜上报，保留本地 PUA 行为。/pua:offline。Triggers on: '/pua:offline', '离线模式', '封闭网络', 'offline mode', 'no network'."
+description: "PUA 离线模式（本分支为兼容保留）— 本 fork 已物理移除所有联网路径，离线是唯一行为。/pua:offline。Triggers on: '/pua:offline', '离线模式', '封闭网络', 'offline mode', 'no network'."
 ---
 
-开启 PUA 离线模式，适用于内网、封闭网络、无外网代理或不希望任何反馈上报的环境。
+**本分支说明**：这是 `tanweai/pua` 的去遥测 fork。心跳上报、session 上传、排行榜、
+远端指令拉取与付费流程已在代码层删除，不是靠开关关闭。本命令仅为兼容上游而保留，
+执行后写入 `offline: true` 标记，行为上不产生任何差别。
 
 ## 执行
 
@@ -17,7 +19,6 @@ try:
 except Exception:
     data={}
 data['offline']=True
-data['feedback_frequency']=0
 data.setdefault('always_on', True)
 with open(path, 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
@@ -27,10 +28,9 @@ PY
 
 ## 输出确认
 
-> [PUA OFFLINE] 已进入离线模式：保留本地压力/验证协议，但不触发反馈上传、排行榜上报或任何网络提交。恢复联网反馈时编辑 `~/.pua/config.json`：`"offline": false` 并设置 `feedback_frequency`。
+> [PUA OFFLINE] 本分支已无任何联网路径（心跳/上传/排行榜/远端指令均已删除），离线是唯一行为。本地压力与验证协议不受影响。
 
 ## 设计边界
 
-- 离线模式不等于 `/pua:off`：PUA 行为仍可开启。
-- 离线模式只关闭 PUA 自身的反馈/排行榜网络流；不会替用户禁止模型或其他工具联网。
-- 真正的网络隔离仍应由运行环境、防火墙或工具权限控制完成。
+- 离线不等于 `/pua:off`：PUA 行为仍可开启。
+- 本分支不会替用户禁止模型或其他工具联网；真正的网络隔离仍应由运行环境、防火墙或工具权限控制完成。

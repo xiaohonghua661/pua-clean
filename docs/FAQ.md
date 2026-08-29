@@ -1,5 +1,9 @@
 # PUA FAQ / Issue Playbook
 
+> **本文档属于 `xiaohonghua661/pua-clean`——`tanweai/pua` 的去遥测 fork。**
+> 上游关于 heartbeat、session 上传、排行榜、远端指令与付费的条目已随代码一并删除。
+> 完整删除清单见仓库根目录 [`CLEAN.md`](../CLEAN.md)。
+
 ## 需不需要总是开启 PUA？
 
 不建议无脑 always-on。推荐按风险分层：
@@ -38,7 +42,7 @@
 }
 ```
 
-离线模式会关闭 PUA 自身的反馈问卷、排行榜上报和 session 上传提示；PUA 的本地验证、压力升级、诊断先行仍可使用。
+本分支已在源码层删除全部联网路径（心跳、session 上传、排行榜、远端指令、付费），因此内网环境无需任何额外设置；`/pua:offline` 仅为兼容上游保留。PUA 的本地验证、压力升级、诊断先行不受影响。
 
 ## Codex CLI 子命令怎么对应 Claude Code？
 
@@ -61,18 +65,6 @@ Codex 没有 Claude Code 的 `/pua:xxx` slash command 命名空间时，可以�
 - `.trae/skills/`：Trae 标准 `SKILL.md` 包；`trae/` 保留 Prompt/Rule 复制版和差异说明。
 - Trae / Pi 都不继承 Claude Code hooks；四权分离 gate 必须通过 Skill 工作规程、外部验证和用户确认落地。
 
-## Feedback endpoint 为什么仍限制 `session_data`？
-
-从 v3.4.5 起采用新折中：
-
-- 匿名评分仍允许写入 `/api/feedback`，便于低摩擦反馈；
-- `/api/feedback` 里的 `session_data` 字段仍要求登录，避免旧入口被滥用；
-- Skill 内的 session 贡献改走 `/api/upload`：用户在 AskUserQuestion 里明确同意后，本地先脱敏，再以匿名 raw JSONL 直传；
-- `/api/upload` 对匿名上传有 consent header、50MB 限制、文件名清洗和 D1 rate limit。
-
-这比强制 GitHub 登录更利于收集真实数据，同时避免“无同意、无脱敏、无限流”的裸奔上传。
-
-
 ## Integrity Guard 为什么不再使用 `permissionDecision: "ask"`？
 
 从 v3.4.6 起，PUA Integrity Guard 将敏感但合法的操作降级为 advisory-only：只注入 `additionalContext`，不再输出 `permissionDecision: "ask"`。
@@ -93,20 +85,3 @@ Codex 没有 Claude Code 的 `/pua:xxx` slash command 命名空间时，可以�
 
 - start/intervene → “亲自动手” / “亲自介入”；
 - stop/release → “释放” / “退场”。
-
-## 静默 heartbeat 会不会污染对话？
-
-不会。v3.4.3 的活跃用户统计走 **SessionStart command hook**，不是 skill prompt，也不输出 `additionalContext`。因此模型上下文里不会出现 heartbeat endpoint、install id 或统计提示。
-
-治理边界：
-
-- `offline: true`、`telemetry: false` 或 `feedback_frequency: 0` 会关闭 heartbeat；
-- 本地只生成随机 install id，Cloudflare D1 只保存 SHA-256 hash；
-- 管理页面是 `https://openpua.ai/#/admin/heartbeats`，需要 GitHub 登录并命中管理员白名单；
-- hook 有静默测试：即使网络失败，也不能向对话输出任何字节。
-
-## 上传数据入口打不开或上传失败怎么办？
-
-从 v3.4.4 起，`https://openpua.ai/contribute.html` 是一等路由：GitHub 登录回跳、登出回跳、README 和 Stop hook 都可以直接使用这个地址，不再依赖 hash route。
-
-上传链路默认发送 raw JSONL：前端直接把 `.jsonl` 文本 POST 到 `/api/upload`，文件名和可选微信号放在 header 里。服务端仍保留 JSON `file_data` 和 multipart 兼容，但默认 raw JSONL 路径可以避开 multipart body 剥离，也不会产生 base64 体积膨胀。

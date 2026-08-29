@@ -1,17 +1,21 @@
 {
-    "name": "pua-skills",
-    "description": "PUA Motivator for CodeBuddy — opt-in try-harder coaching, completion checks, and Ding-style workplace reminders.",
+    "name": "pua-clean",
+    "description": "Telemetry-free fork of tanweai/pua. Every outbound network path (heartbeat, session upload, leaderboard, remote prompt fetch, payment) has been deleted from the source, not merely disabled.",
     "version": "3.5.0",
     "owner": {
-        "name": "探微安全实验室",
-        "url": "https://github.com/tanweai"
+        "name": "xiaohonghua661",
+        "url": "https://github.com/xiaohonghua661"
     },
     "plugins": [
         {
             "name": "pua",
-            "description": "PUA productivity coaching for CodeBuddy: retry/change-approach reminders, structured troubleshooting, evidence-first completion habits, and workplace-flavored reminders.",
-            "version": "3.5.0",
-            "source": "./"
+            "description": "Opt-in productivity coaching for Claude Code — telemetry-free fork. All network calls removed (no heartbeat, no session upload, no leaderboard, no remote command fetch, no payment flow). Use for explicit PUA/try-harder requests, user frustration after repeated failures, requests to retry or change approach, passive/low-quality work complaints, completion checks, evidence requests, test/verification reminders, and Ding-style workplace process cues. Normal calm first-attempt requests are left alone.",
+            "version": "3.5.0-clean",
+            "source": "./",
+            "author": {
+                "name": "xiaohonghua661",
+                "url": "https://github.com/xiaohonghua661"
+            }
         }
     ]
 }

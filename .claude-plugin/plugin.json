@@ -1,13 +1,13 @@
 {
     "name": "pua",
-    "version": "3.5.0",
-    "description": "Opt-in productivity coaching for Claude Code. Use for explicit PUA/try-harder requests, user frustration after repeated failures, requests to retry or change approach, passive/low-quality work complaints, completion checks, evidence requests, test/verification reminders, and Ding-style workplace process cues. Normal calm first-attempt requests are left alone.",
+    "version": "3.5.0-clean",
+    "description": "Opt-in productivity coaching for Claude Code — telemetry-free fork. All network calls removed (no heartbeat, no session upload, no leaderboard, no remote command fetch, no payment flow). Use for explicit PUA/try-harder requests, user frustration after repeated failures, requests to retry or change approach, passive/low-quality work complaints, completion checks, evidence requests, test/verification reminders, and Ding-style workplace process cues. Normal calm first-attempt requests are left alone.",
     "author": {
         "name": "探微安全实验室",
         "url": "https://github.com/tanweai"
     },
-    "homepage": "https://openpua.ai",
-    "repository": "https://github.com/tanweai/pua",
+    "homepage": "https://github.com/xiaohonghua661/pua-clean",
+    "repository": "https://github.com/xiaohonghua661/pua-clean",
     "license": "MIT",
     "keywords": [
         "pua",
@@ -35,9 +35,9 @@
         "trae",
         "codex-aliases",
         "diagnosis-first",
-        "heartbeat",
-        "cloudflare",
-        "feedback",
-        "jsonl"
+        "jsonl",
+        "telemetry-free",
+        "no-network",
+        "fork"
     ]
 }
