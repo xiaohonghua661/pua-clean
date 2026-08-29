@@ -68,7 +68,21 @@ grep -rIn -E 'pua-skill\.pages\.dev|agentguard\.workers\.dev' . --exclude-dir=.g
 
 应无输出（CLEAN.md 自身除外）。
 
-## 六、与上游的关系
+## 六、维护流程
+
+工作副本在用户主目录下的 `pua-clean/`。直接在这里改，然后：
+
+```bash
+./sync.sh          # 同步进 Claude Code 插件缓存，然后重启客户端生效
+```
+
+`sync.sh` 同步前有三道闸门，任一命中即拒绝：出现遥测端点、已删除的遥测文件重新出现、
+`hooks.json` 重新注册遥测钩子。**merge 上游后必须靠它把关**——上游改动很可能把这些带回来。
+三道闸门均已负向测试：分别故意触发，均以 exit 1 拒绝同步。
+
+改动要防重装丢失或跨机器复用，还要 `git push`（插件重装时 marketplace 从 GitHub 拉）。
+
+## 七、与上游的关系
 
 上游 CI（`.github/workflows/release.yml`）与部分 eval 依赖已删除的文件，在本 fork 上不会通过。
 本分支面向本地使用，不面向发布。上游 MIT 许可与原作者署名保留在 `LICENSE`。
