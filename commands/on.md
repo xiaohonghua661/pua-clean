@@ -10,6 +10,5 @@ description: "PUA 开启默认模式 — 每次新会话自动加载 PUA 核心 
 
 ## 对称性（与 `/pua:off` 的关系）
 
-- `/pua:off` 只关闭 always-on；本分支无问卷/反馈系统
-- `/pua:on` **必须**检测并恢复该字段，否则"先 off 再 on"会导致 feedback 永久失效（静默 bug）
-- 保留原则：不清楚的字段一律 preserve，不 overwrite 整个 config
+- `/pua:off` 只关闭 `always_on`；本分支已无问卷/反馈系统，没有别的字段需要复原
+- 保留原则：不认识的字段一律 preserve，不 overwrite 整个 config
