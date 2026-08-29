@@ -287,7 +287,7 @@ Codex CLIは同じAgent Skillsオープンスタンダード（SKILL.md）を使
 
 Codexに実行させる：
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/tanweai/pua/main/.codex/INSTALL.md
+（本 fork 已移除该安装方式：它让 agent 从上游仓库拉一份文件并照其指令执行，而上游内容随时可变、不在本 fork 的审查范围内。请改为 clone 本仓库后本地安装。）
 ```
 
 **手動インストール：**
